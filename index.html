@@ -45,12 +45,6 @@
         .grid-line-r {
             border-right: 1px solid rgba(10, 10, 10, 0.15);
         }
-        .grid-line-t {
-            border-top: 1px solid rgba(10, 10, 10, 0.15);
-        }
-        .grid-line-l {
-            border-left: 1px solid rgba(10, 10, 10, 0.15);
-        }
         .huge-title {
             font-size: clamp(3rem, 12vw, 13rem);
             line-height: 0.85;
@@ -61,7 +55,6 @@
             line-height: 0.9;
             letter-spacing: -0.04em;
         }
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 5px;
         }
@@ -75,7 +68,7 @@
 </head>
 <body class="selection:bg-ink selection:text-canvas">
 
-    <!-- Top Grid Header -->
+    <!-- Top Header -->
     <header class="sticky top-0 z-40 bg-[#f2f2ee]/90 backdrop-blur-md grid-line-b">
         <div class="max-w-[1800px] mx-auto grid grid-cols-12 text-xs font-mono uppercase tracking-widest py-4 px-4 md:px-8 items-center">
             <div class="col-span-6 md:col-span-4 font-bold text-sm tracking-tighter">
@@ -272,7 +265,7 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 pt-12 border-t border-ink/15 mt-12 font-mono text-xs uppercase">
+            <div class="grid grid-cols-2 gap-6 pt-12 border-t border-ink/15 mt-12 font-mono text-xs uppercase">
                 <div>
                     <span class="text-subtle block mb-1">[ SERVICES ]</span>
                     <ul class="space-y-1">
@@ -282,20 +275,40 @@
                     </ul>
                 </div>
                 <div>
-                    <span class="text-subtle block mb-1">[ SOFTWARE ]</span>
-                    <ul class="space-y-1">
-                        <li>— DAVINCI RESOLVE</li>
-                        <li>— PIXELMATOR PRO</li>
-                        <li>— LIGHTROOM</li>
-                    </ul>
-                </div>
-                <div>
                     <span class="text-subtle block mb-1">[ LOCATION ]</span>
                     <ul class="space-y-1">
                         <li>— MARSEILLE, FR</li>
                         <li>— PROVENCE / PACA</li>
                     </ul>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="max-w-[1800px] mx-auto grid grid-cols-1 md:grid-cols-12 grid-line-b">
+        <div class="md:col-span-5 p-8 grid-line-r flex flex-col justify-between min-h-[300px]">
+            <div>
+                <div class="font-mono text-xs text-subtle uppercase mb-4">[ 003 // INQUIRIES ]</div>
+                <h2 class="editorial-title font-bold uppercase mb-6 tracking-tighter">GET IN<br>TOUCH</h2>
+            </div>
+            <div class="font-mono text-xs text-subtle uppercase">
+                BASED IN MARSEILLE, FR<br>AVAILABLE WORLDWIDE
+            </div>
+        </div>
+
+        <div class="md:col-span-7 p-8 md:p-16 flex flex-col justify-center space-y-10">
+            <div>
+                <span class="font-mono text-xs text-subtle uppercase block mb-2">[ DIRECT EMAIL ]</span>
+                <a href="mailto:seven.gvd@icloud.com" class="text-xl md:text-3xl font-bold underline underline-offset-8 hover:text-subtle transition-colors">
+                    seven.gvd@icloud.com
+                </a>
+            </div>
+            <div>
+                <span class="font-mono text-xs text-subtle uppercase block mb-2">[ INSTAGRAM ]</span>
+                <a href="https://instagram.com/seven.gvd" target="_blank" rel="noopener noreferrer" class="text-xl md:text-3xl font-bold underline underline-offset-8 hover:text-subtle transition-colors">
+                    @seven.gvd ↗
+                </a>
             </div>
         </div>
     </section>
@@ -320,7 +333,7 @@
 
         <div class="flex-1 flex items-center justify-center my-6 overflow-hidden">
             <div id="modal-content" class="w-full max-w-5xl max-h-[75vh] flex justify-center items-center">
-                <!-- Dynamic Content injected here -->
+                <!-- Dynamic Content -->
             </div>
         </div>
 
@@ -331,7 +344,6 @@
 
     <!-- Scripts -->
     <script>
-        // Gallery Filter
         function filterGallery(category) {
             const items = document.querySelectorAll('.gallery-item');
             const buttons = document.querySelectorAll('.filter-btn');
@@ -353,7 +365,6 @@
             });
         }
 
-        // Lightbox Functions
         function openLightbox(type, url, title, category) {
             const modal = document.getElementById('lightbox');
             const modalContent = document.getElementById('modal-content');
@@ -378,7 +389,6 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Close modal on Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeLightbox();
