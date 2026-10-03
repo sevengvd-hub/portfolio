@@ -3,30 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexandre Vane — Director & Photographer</title>
+    <title>Seven Gevaudan — Director & Photographer</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Space Grotesk & Space Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        display: ['Syne', 'sans-serif'],
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        mono: ['Space Mono', 'monospace'],
                     },
                     colors: {
-                        accent: {
-                            DEFAULT: '#F59E0B',
-                            hover: '#D97706',
-                            glow: 'rgba(245, 158, 11, 0.25)',
-                        }
+                        canvas: '#f2f2ee',
+                        ink: '#0a0a0a',
+                        line: '#1a1a1a',
+                        subtle: '#666666'
                     }
                 }
             }
@@ -34,503 +33,267 @@
     </script>
 
     <style>
-        /* Custom scrollbar */
+        body {
+            background-color: #f2f2ee;
+            color: #0a0a0a;
+            font-family: 'Space Grotesk', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .grid-line-b {
+            border-bottom: 1px solid rgba(10, 10, 10, 0.15);
+        }
+        .grid-line-r {
+            border-right: 1px solid rgba(10, 10, 10, 0.15);
+        }
+        .grid-line-t {
+            border-top: 1px solid rgba(10, 10, 10, 0.15);
+        }
+        .grid-line-l {
+            border-left: 1px solid rgba(10, 10, 10, 0.15);
+        }
+        .huge-title {
+            font-size: clamp(3rem, 12vw, 13rem);
+            line-height: 0.85;
+            letter-spacing: -0.05em;
+        }
+        .editorial-title {
+            font-size: clamp(2rem, 6vw, 6rem);
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+        }
+        /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 5px;
         }
         ::-webkit-scrollbar-track {
-            background: #09090b;
+            background: #f2f2ee;
         }
         ::-webkit-scrollbar-thumb {
-            background: #27272a;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #3f3f46;
-        }
-
-        /* Glassmorphism styling */
-        .glass-panel {
-            background: rgba(18, 18, 22, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .glass-card {
-            background: rgba(24, 24, 27, 0.6);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .glass-card:hover {
-            border-color: rgba(245, 158, 11, 0.4);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Gradient text effect */
-        .text-gradient {
-            background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .text-accent-gradient {
-            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Hero video backdrop glow */
-        .video-overlay {
-            background: radial-gradient(circle at center, rgba(9, 9, 11, 0.3) 0%, rgba(9, 9, 11, 0.95) 100%);
-        }
-
-        /* Custom image filter hover animation */
-        .portfolio-item img, .portfolio-item video {
-            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .portfolio-item:hover img, .portfolio-item:hover video {
-            transform: scale(1.06);
-        }
-
-        /* Pulse badge animation */
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.8; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.05); }
-        }
-        .live-badge {
-            animation: pulseGlow 2s infinite ease-in-out;
+            background: #0a0a0a;
         }
     </style>
 </head>
-<body class="bg-zinc-950 text-zinc-100 font-sans selection:bg-amber-500 selection:text-black antialiased overflow-x-hidden">
+<body class="selection:bg-ink selection:text-canvas">
 
-    <!-- Header Navigation -->
-    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-5">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-            <!-- Brand Logo -->
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-500 font-display font-bold text-xl group-hover:bg-amber-500 group-hover:text-black transition-all duration-300">
-                    AV
-                </div>
-                <div class="flex flex-col">
-                    <span class="font-display font-bold text-lg tracking-wider text-white group-hover:text-amber-400 transition-colors">ALEXANDRE VANE</span>
-                    <span class="text-[10px] tracking-widest text-zinc-400 uppercase">Photo & Filmmaker</span>
-                </div>
-            </a>
-
-            <!-- Desktop Nav Links -->
-            <nav class="hidden md:flex items-center gap-1 glass-panel px-6 py-2.5 rounded-full">
-                <a href="#hero" class="px-4 py-1.5 text-sm text-zinc-300 hover:text-amber-400 transition-colors rounded-full hover:bg-white/5">Accueil</a>
-                <a href="#portfolio" class="px-4 py-1.5 text-sm text-zinc-300 hover:text-amber-400 transition-colors rounded-full hover:bg-white/5">Réalisations</a>
-                <a href="#about" class="px-4 py-1.5 text-sm text-zinc-300 hover:text-amber-400 transition-colors rounded-full hover:bg-white/5">À Propos</a>
-                <a href="#gear" class="px-4 py-1.5 text-sm text-zinc-300 hover:text-amber-400 transition-colors rounded-full hover:bg-white/5">Matériel</a>
-                <a href="#contact" class="px-4 py-1.5 text-sm text-zinc-300 hover:text-amber-400 transition-colors rounded-full hover:bg-white/5">Contact</a>
+    <!-- Top Grid Header -->
+    <header class="sticky top-0 z-40 bg-[#f2f2ee]/90 backdrop-blur-md grid-line-b">
+        <div class="max-w-[1800px] mx-auto grid grid-cols-12 text-xs font-mono uppercase tracking-widest py-4 px-4 md:px-8 items-center">
+            <div class="col-span-6 md:col-span-4 font-bold text-sm tracking-tighter">
+                <a href="#">SEVEN GEVAUDAN.</a>
+            </div>
+            <div class="hidden md:block md:col-span-4 text-center text-subtle">
+                [ VISUAL ARCHIVE // 2026 ]
+            </div>
+            <nav class="col-span-6 md:col-span-4 flex justify-end gap-6 font-mono text-[11px]">
+                <a href="#work" class="hover:underline underline-offset-4">[ WORK ]</a>
+                <a href="#about" class="hover:underline underline-offset-4">[ ABOUT ]</a>
+                <a href="#contact" class="hover:underline underline-offset-4">[ CONTACT ]</a>
             </nav>
-
-            <!-- CTA Button Desktop -->
-            <div class="hidden md:flex items-center gap-4">
-                <a href="#contact" class="relative group overflow-hidden rounded-full p-[1px] focus:outline-none">
-                    <span class="absolute inset-0 bg-gradient-to-r from-amber-500 to-amber-600 rounded-full"></span>
-                    <span class="relative px-5 py-2.5 rounded-full bg-zinc-950 group-hover:bg-opacity-0 text-white font-medium text-sm flex items-center gap-2 transition-all duration-300">
-                        <span>Réserver un projet</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-amber-400 group-hover:text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
-                    </span>
-                </a>
-            </div>
-
-            <!-- Mobile Hamburger Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden w-11 h-11 rounded-xl glass-panel flex items-center justify-center text-zinc-200 hover:text-white focus:outline-none">
-                <i class="fa-solid fa-bars text-lg" id="menu-icon"></i>
-            </button>
-        </div>
-
-        <!-- Mobile Navigation Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden glass-panel mx-6 mt-3 rounded-2xl p-6 border border-zinc-800 flex-col gap-4">
-            <a href="#hero" class="mobile-nav-link text-lg text-zinc-200 hover:text-amber-400 py-1 flex items-center justify-between">
-                <span>Accueil</span> <i class="fa-solid fa-chevron-right text-xs text-zinc-600"></i>
-            </a>
-            <a href="#portfolio" class="mobile-nav-link text-lg text-zinc-200 hover:text-amber-400 py-1 flex items-center justify-between">
-                <span>Réalisations</span> <i class="fa-solid fa-chevron-right text-xs text-zinc-600"></i>
-            </a>
-            <a href="#about" class="mobile-nav-link text-lg text-zinc-200 hover:text-amber-400 py-1 flex items-center justify-between">
-                <span>À Propos</span> <i class="fa-solid fa-chevron-right text-xs text-zinc-600"></i>
-            </a>
-            <a href="#gear" class="mobile-nav-link text-lg text-zinc-200 hover:text-amber-400 py-1 flex items-center justify-between">
-                <span>Matériel</span> <i class="fa-solid fa-chevron-right text-xs text-zinc-600"></i>
-            </a>
-            <a href="#contact" class="mobile-nav-link text-lg text-zinc-200 hover:text-amber-400 py-1 flex items-center justify-between">
-                <span>Contact</span> <i class="fa-solid fa-chevron-right text-xs text-zinc-600"></i>
-            </a>
-            <div class="pt-4 border-t border-zinc-800/80 flex justify-center gap-6">
-                <a href="#" class="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-amber-400"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-amber-400"><i class="fa-brands fa-vimeo-v"></i></a>
-                <a href="#" class="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-amber-400"><i class="fa-brands fa-youtube"></i></a>
-            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
-        <!-- Background Ambient Video Loop with Fallback Image -->
-        <div class="absolute inset-0 z-0">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-30 scale-105">
-                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
-            </video>
-            <div class="absolute inset-0 video-overlay"></div>
-        </div>
-
-        <!-- Animated Background Light Blobs -->
-        <div class="absolute top-1/4 left-10 w-96 h-96 bg-amber-500/10 rounded-full filter blur-[120px] pointer-events-none"></div>
-        <div class="absolute bottom-10 right-10 w-96 h-96 bg-amber-600/10 rounded-full filter blur-[140px] pointer-events-none"></div>
-
-        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center">
-            <!-- Availability Badge -->
-            <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-panel border border-amber-500/20 text-xs font-medium text-amber-400 mb-8">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 live-badge"></span>
-                <span>Disponible pour projets & tournages 2026</span>
+    <section class="max-w-[1800px] mx-auto px-4 md:px-8 py-12 md:py-24 grid-line-b">
+        <div class="flex flex-col justify-between min-h-[50vh]">
+            <div class="flex justify-between items-start font-mono text-xs uppercase text-subtle mb-6">
+                <span>[ 001 // PORTFOLIO ]</span>
+                <span class="text-right">PHOTOGRAPHY & DIRECTING<br>BASED IN MARSEILLE, FR</span>
             </div>
-
-            <!-- Main Headline -->
-            <h1 class="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-white mb-6 leading-[1.08]">
-                Raconter par l'Image & <br class="hidden sm:inline">
-                <span class="text-accent-gradient">le Mouvement.</span>
+            
+            <h1 class="huge-title font-bold uppercase font-sans my-4 tracking-tighter text-ink select-none">
+                SEVEN<br>GEVAUDAN
             </h1>
 
-            <p class="max-w-2xl text-zinc-400 text-base sm:text-lg md:text-xl font-normal mb-10 leading-relaxed">
-                Photographe & Réalisateur vidéo spécialisé dans la publicité créative, l'événementiel haut de gamme et les prises de vue FPV aériennes.
-            </p>
-
-            <!-- Call to Action Buttons -->
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-                <a href="#portfolio" class="w-full sm:w-auto px-8 py-4 rounded-full bg-amber-500 hover:bg-amber-400 text-black font-semibold text-base flex items-center justify-center gap-3 transition-all duration-300 shadow-lg shadow-amber-500/20 hover:scale-105">
-                    <span>Explorer le Portfolio</span>
-                    <i class="fa-solid fa-arrow-down text-sm"></i>
-                </a>
-                
-                <button onclick="openShowreelModal()" class="w-full sm:w-auto px-8 py-4 rounded-full glass-panel hover:bg-white/10 text-white font-medium text-base flex items-center justify-center gap-3 border border-zinc-700/80 transition-all duration-300">
-                    <i class="fa-solid fa-play text-xs text-amber-400"></i>
-                    <span>Voir le Showreel 2026 (1 min)</span>
-                </button>
-            </div>
-
-            <!-- Stats Bar -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 mt-16 pt-12 border-t border-zinc-800/60 w-full max-w-4xl">
-                <div>
-                    <div class="font-display text-3xl md:text-4xl font-bold text-white mb-1">8+</div>
-                    <div class="text-xs text-zinc-400 uppercase tracking-wider">Années d'Expérience</div>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 pt-12 items-end">
+                <div class="md:col-span-6 font-mono text-xs uppercase text-subtle tracking-wider">
+                    — VISUAL WORKS, SHORT FILMS & EDITORIAL PHOTOGRAPHY
                 </div>
-                <div>
-                    <div class="font-display text-3xl md:text-4xl font-bold text-white mb-1">150+</div>
-                    <div class="text-xs text-zinc-400 uppercase tracking-wider">Projets Réalisés</div>
-                </div>
-                <div>
-                    <div class="font-display text-3xl md:text-4xl font-bold text-white mb-1">4K FPV</div>
-                    <div class="text-xs text-zinc-400 uppercase tracking-wider">Cinématique Aérienne</div>
-                </div>
-                <div>
-                    <div class="font-display text-3xl md:text-4xl font-bold text-white mb-1">100%</div>
-                    <div class="text-xs text-zinc-400 uppercase tracking-wider">Engagement Créatif</div>
+                <div class="md:col-span-6 md:text-right font-mono text-xs uppercase">
+                    <a href="#work" class="inline-flex items-center gap-2 border border-ink px-6 py-3 hover:bg-ink hover:text-canvas transition-colors duration-300">
+                        EXPLORE ARCHIVE <i class="fa-solid fa-arrow-down"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Gallery Section -->
-    <section id="portfolio" class="py-24 relative bg-zinc-950">
-        <div class="max-w-7xl mx-auto px-6 md:px-12">
-            <!-- Section Header -->
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-                <div>
-                    <span class="text-amber-400 font-semibold text-sm tracking-widest uppercase mb-2 block">Savoir-Faire & Travaux</span>
-                    <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
-                        Galerie de Réalisations
-                    </h2>
-                </div>
-
-                <!-- Category Filter Buttons -->
-                <div class="flex flex-wrap gap-2 p-1.5 rounded-2xl glass-panel border border-zinc-800">
-                    <button data-filter="all" class="filter-btn px-5 py-2 rounded-xl text-sm font-medium transition-all duration-300 bg-amber-500 text-black">
-                        Tous
-                    </button>
-                    <button data-filter="photo" class="filter-btn px-5 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-zinc-400 hover:text-white">
-                        Photos
-                    </button>
-                    <button data-filter="video" class="filter-btn px-5 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-zinc-400 hover:text-white">
-                        Vidéos
-                    </button>
-                    <button data-filter="creative" class="filter-btn px-5 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-zinc-400 hover:text-white">
-                        Drone & FPV
-                    </button>
-                </div>
-            </div>
-
-            <!-- Portfolio Grid -->
-            <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                
-                <!-- Item 1: Video -->
-                <div class="portfolio-item group glass-card rounded-2xl overflow-hidden cursor-pointer" data-category="video" 
-                     onclick="openLightbox('video', 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', 'Showreel Automne - Clip Publicitaire', 'Vidéo Commerciale • Colorimétrie LUTs Custom')">
-                    <div class="relative aspect-[16/10] overflow-hidden bg-zinc-900">
-                        <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1000&q=80" alt="Video Project" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x500/18181b/ffffff?text=Video+Project'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
-                        <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-semibold text-amber-400 border border-amber-500/20 flex items-center gap-1.5">
-                            <i class="fa-solid fa-film text-[10px]"></i> Vidéo
-                        </div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-14 h-14 rounded-full bg-amber-500/90 text-black flex items-center justify-center text-lg pl-1 shadow-lg transform group-hover:scale-110 transition-transform">
-                                <i class="fa-solid fa-play"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-display font-bold text-xl text-white group-hover:text-amber-400 transition-colors">Showreel Automne</h3>
-                        <p class="text-zinc-400 text-sm mt-1">Campagne commerciale marque outdoor</p>
-                    </div>
-                </div>
-
-                <!-- Item 2: Photo -->
-                <div class="portfolio-item group glass-card rounded-2xl overflow-hidden cursor-pointer" data-category="photo"
-                     onclick="openLightbox('image', 'https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?auto=format&fit=crop&w=1600&q=80', 'Architecture Minimaliste', 'Série Photographique • Paris, 2026')">
-                    <div class="relative aspect-[16/10] overflow-hidden bg-zinc-900">
-                        <img src="https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?auto=format&fit=crop&w=1000&q=80" alt="Architecture Photo" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x500/18181b/ffffff?text=Photo+Architecture'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
-                        <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-semibold text-zinc-300 border border-zinc-700 flex items-center gap-1.5">
-                            <i class="fa-solid fa-camera text-[10px]"></i> Photo
-                        </div>
-                        <div class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <div class="w-10 h-10 rounded-full bg-zinc-900/80 text-white flex items-center justify-center text-sm border border-zinc-700">
-                                <i class="fa-solid fa-expand"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-display font-bold text-xl text-white group-hover:text-amber-400 transition-colors">Architecture Minimaliste</h3>
-                        <p class="text-zinc-400 text-sm mt-1">Lumières & Lignes Urbaines</p>
-                    </div>
-                </div>
-
-                <!-- Item 3: Creative Drone FPV -->
-                <div class="portfolio-item group glass-card rounded-2xl overflow-hidden cursor-pointer" data-category="creative"
-                     onclick="openLightbox('video', 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', 'Survol des Alpes - FPV 4K', 'Prises de vue Aériennes • Drone Custom FPV')">
-                    <div class="relative aspect-[16/10] overflow-hidden bg-zinc-900">
-                        <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=1000&q=80" alt="Drone FPV" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x500/18181b/ffffff?text=Drone+FPV'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
-                        <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-semibold text-amber-400 border border-amber-500/20 flex items-center gap-1.5">
-                            <i class="fa-solid fa-plane text-[10px]"></i> Drone FPV
-                        </div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-14 h-14 rounded-full bg-amber-500/90 text-black flex items-center justify-center text-lg pl-1 shadow-lg transform group-hover:scale-110 transition-transform">
-                                <i class="fa-solid fa-play"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-display font-bold text-xl text-white group-hover:text-amber-400 transition-colors">Survol des Alpes en FPV</h3>
-                        <p class="text-zinc-400 text-sm mt-1">Cinématique dynamique haute vitesse</p>
-                    </div>
-                </div>
-
-                <!-- Item 4: Photo Portrait -->
-                <div class="portfolio-item group glass-card rounded-2xl overflow-hidden cursor-pointer" data-category="photo"
-                     onclick="openLightbox('image', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1600&q=80', 'Série Portrait Studio', 'Éclairage Cinéma • Sony A7IV 85mm')">
-                    <div class="relative aspect-[16/10] overflow-hidden bg-zinc-900">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=80" alt="Studio Portrait" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x500/18181b/ffffff?text=Portrait+Studio'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
-                        <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-semibold text-zinc-300 border border-zinc-700 flex items-center gap-1.5">
-                            <i class="fa-solid fa-camera text-[10px]"></i> Photo
-                        </div>
-                        <div class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <div class="w-10 h-10 rounded-full bg-zinc-900/80 text-white flex items-center justify-center text-sm border border-zinc-700">
-                                <i class="fa-solid fa-expand"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-display font-bold text-xl text-white group-hover:text-amber-400 transition-colors">Série Portrait Moody</h3>
-                        <p class="text-zinc-400 text-sm mt-1">Travail d'ombres et lumière continue</p>
-                    </div>
-                </div>
-
-                <!-- Item 5: Video Event -->
-                <div class="portfolio-item group glass-card rounded-2xl overflow-hidden cursor-pointer" data-category="video"
-                     onclick="openLightbox('video', 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4', 'Aftermovie Festival Cyberpunk', 'Événementiel • Audio Design & Montage Rythmé')">
-                    <div class="relative aspect-[16/10] overflow-hidden bg-zinc-900">
-                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1000&q=80" alt="Event Video" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x500/18181b/ffffff?text=Event+Video'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
-                        <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-semibold text-amber-400 border border-amber-500/20 flex items-center gap-1.5">
-                            <i class="fa-solid fa-film text-[10px]"></i> Vidéo
-                        </div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-14 h-14 rounded-full bg-amber-500/90 text-black flex items-center justify-center text-lg pl-1 shadow-lg transform group-hover:scale-110 transition-transform">
-                                <i class="fa-solid fa-play"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-display font-bold text-xl text-white group-hover:text-amber-400 transition-colors">Aftermovie Événementiel</h3>
-                        <p class="text-zinc-400 text-sm mt-1">Festival Nightlife & Captation Live</p>
-                    </div>
-                </div>
-
-                <!-- Item 6: Photo Fashion -->
-                <div class="portfolio-item group glass-card rounded-2xl overflow-hidden cursor-pointer" data-category="photo"
-                     onclick="openLightbox('image', 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1600&q=80', 'Lookbook Collection Automne', 'Mode & Editorial • Lookbook 2026')">
-                    <div class="relative aspect-[16/10] overflow-hidden bg-zinc-900">
-                        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1000&q=80" alt="Fashion Photo" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x500/18181b/ffffff?text=Fashion+Photo'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
-                        <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-semibold text-zinc-300 border border-zinc-700 flex items-center gap-1.5">
-                            <i class="fa-solid fa-camera text-[10px]"></i> Photo
-                        </div>
-                        <div class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <div class="w-10 h-10 rounded-full bg-zinc-900/80 text-white flex items-center justify-center text-sm border border-zinc-700">
-                                <i class="fa-solid fa-expand"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-display font-bold text-xl text-white group-hover:text-amber-400 transition-colors">Editorial & Mode</h3>
-                        <p class="text-zinc-400 text-sm mt-1">Shooting Lookbook Marque Urbaine</p>
-                    </div>
-                </div>
-
+    <!-- Navigation / Filter Bar -->
+    <section id="work" class="max-w-[1800px] mx-auto px-4 md:px-8 py-6 grid-line-b">
+        <div class="flex flex-wrap items-center justify-between gap-4 font-mono text-xs uppercase">
+            <div class="text-subtle">[ INDEX / SELECTED WORKS ]</div>
+            <div class="flex flex-wrap gap-2 md:gap-4">
+                <button onclick="filterGallery('all')" class="filter-btn active border border-ink bg-ink text-canvas px-4 py-1.5 transition-all">
+                    ALL [06]
+                </button>
+                <button onclick="filterGallery('video')" class="filter-btn border border-ink/20 hover:border-ink px-4 py-1.5 transition-all">
+                    VIDEO [03]
+                </button>
+                <button onclick="filterGallery('photo')" class="filter-btn border border-ink/20 hover:border-ink px-4 py-1.5 transition-all">
+                    PHOTO [03]
+                </button>
             </div>
         </div>
+    </section>
+
+    <!-- Work Gallery Grid -->
+    <section class="max-w-[1800px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-line-b">
+        
+        <!-- Item 01: Video -->
+        <div class="gallery-item video grid-line-r grid-line-b p-6 flex flex-col justify-between group cursor-pointer" onclick="openLightbox('video', 'https://www.youtube.com/embed/dQw4w9WgXcQ', 'SHOWREEL 2026', 'FILM DIRECTING')">
+            <div>
+                <div class="flex justify-between font-mono text-xs text-subtle mb-4">
+                    <span>[ 001 ]</span>
+                    <span>VIDEO // 4K</span>
+                </div>
+                <div class="relative aspect-video bg-neutral-200 overflow-hidden mb-4 border border-ink/10">
+                    <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=1200&auto=format&fit=crop" alt="Showreel" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+                    <div class="absolute inset-0 bg-ink/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="font-mono text-xs text-canvas bg-ink px-3 py-1 border border-canvas">[ PLAY FILM ]</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 class="font-bold text-xl uppercase tracking-tight group-hover:underline">CINEMATIC SHOWREEL</h3>
+                <p class="font-mono text-xs text-subtle mt-1 uppercase">DIRECTING / EDITING / COLOR</p>
+            </div>
+        </div>
+
+        <!-- Item 02: Photo -->
+        <div class="gallery-item photo grid-line-r grid-line-b p-6 flex flex-col justify-between group cursor-pointer" onclick="openLightbox('photo', 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1200&auto=format&fit=crop', 'LES GOUDES SERIES', 'EDITORIAL PHOTOGRAPHY')">
+            <div>
+                <div class="flex justify-between font-mono text-xs text-subtle mb-4">
+                    <span>[ 002 ]</span>
+                    <span>PHOTO // 35MM</span>
+                </div>
+                <div class="relative aspect-square bg-neutral-200 overflow-hidden mb-4 border border-ink/10">
+                    <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1200&auto=format&fit=crop" alt="Editorial" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+                </div>
+            </div>
+            <div>
+                <h3 class="font-bold text-xl uppercase tracking-tight group-hover:underline">LES GOUDES</h3>
+                <p class="font-mono text-xs text-subtle mt-1 uppercase">LANDSCAPE & PORTRAIT SERIES</p>
+            </div>
+        </div>
+
+        <!-- Item 03: Video -->
+        <div class="gallery-item video grid-line-r grid-line-b p-6 flex flex-col justify-between group cursor-pointer" onclick="openLightbox('video', 'https://www.youtube.com/embed/dQw4w9WgXcQ', 'SKATEPARK POV', 'COMMERCIAL VIDEO')">
+            <div>
+                <div class="flex justify-between font-mono text-xs text-subtle mb-4">
+                    <span>[ 003 ]</span>
+                    <span>VIDEO // HIGH SPEED</span>
+                </div>
+                <div class="relative aspect-video bg-neutral-200 overflow-hidden mb-4 border border-ink/10">
+                    <img src="https://images.unsplash.com/photo-1520045892732-304bc3ac5d8e?q=80&w=1200&auto=format&fit=crop" alt="Skate" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+                    <div class="absolute inset-0 bg-ink/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="font-mono text-xs text-canvas bg-ink px-3 py-1 border border-canvas">[ PLAY FILM ]</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 class="font-bold text-xl uppercase tracking-tight group-hover:underline">SKATE CULTURE</h3>
+                <p class="font-mono text-xs text-subtle mt-1 uppercase">ACTION & MOVEMENT</p>
+            </div>
+        </div>
+
+        <!-- Item 04: Photo -->
+        <div class="gallery-item photo grid-line-r grid-line-b p-6 flex flex-col justify-between group cursor-pointer" onclick="openLightbox('photo', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1200&auto=format&fit=crop', 'PORTRAIT ARCHIVE', 'STUDIO SESSIONS')">
+            <div>
+                <div class="flex justify-between font-mono text-xs text-subtle mb-4">
+                    <span>[ 004 ]</span>
+                    <span>PHOTO // STUDIO</span>
+                </div>
+                <div class="relative aspect-square bg-neutral-200 overflow-hidden mb-4 border border-ink/10">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1200&auto=format&fit=crop" alt="Studio" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+                </div>
+            </div>
+            <div>
+                <h3 class="font-bold text-xl uppercase tracking-tight group-hover:underline">STUDIO PORTRAITS</h3>
+                <p class="font-mono text-xs text-subtle mt-1 uppercase">LIGHT & CONTRAST STUDY</p>
+            </div>
+        </div>
+
+        <!-- Item 05: Video -->
+        <div class="gallery-item video grid-line-r grid-line-b p-6 flex flex-col justify-between group cursor-pointer" onclick="openLightbox('video', 'https://www.youtube.com/embed/dQw4w9WgXcQ', 'LIGHT REFLECTOR TUTORIAL', 'SHORT CONTENT')">
+            <div>
+                <div class="flex justify-between font-mono text-xs text-subtle mb-4">
+                    <span>[ 005 ]</span>
+                    <span>VIDEO // REELS</span>
+                </div>
+                <div class="relative aspect-video bg-neutral-200 overflow-hidden mb-4 border border-ink/10">
+                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1200&auto=format&fit=crop" alt="Tutorial" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+                    <div class="absolute inset-0 bg-ink/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="font-mono text-xs text-canvas bg-ink px-3 py-1 border border-canvas">[ PLAY FILM ]</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 class="font-bold text-xl uppercase tracking-tight group-hover:underline">DIY LIGHT REFLECTOR</h3>
+                <p class="font-mono text-xs text-subtle mt-1 uppercase">CREATIVE TUTORIAL</p>
+            </div>
+        </div>
+
+        <!-- Item 06: Photo -->
+        <div class="gallery-item photo grid-line-r grid-line-b p-6 flex flex-col justify-between group cursor-pointer" onclick="openLightbox('photo', 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop', 'FRECKLE TATTOO POV', 'BEAUTY & AESTHETIC')">
+            <div>
+                <div class="flex justify-between font-mono text-xs text-subtle mb-4">
+                    <span>[ 006 ]</span>
+                    <span>PHOTO // MACRO</span>
+                </div>
+                <div class="relative aspect-square bg-neutral-200 overflow-hidden mb-4 border border-ink/10">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop" alt="Macro" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+                </div>
+            </div>
+            <div>
+                <h3 class="font-bold text-xl uppercase tracking-tight group-hover:underline">AESTHETIC TATTOO</h3>
+                <p class="font-mono text-xs text-subtle mt-1 uppercase">MACRO DETAILS</p>
+            </div>
+        </div>
+
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-24 bg-zinc-900/40 relative border-t border-b border-zinc-800/60">
-        <div class="max-w-7xl mx-auto px-6 md:px-12">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-                
-                <!-- Left Image Column with Badges -->
-                <div class="lg:col-span-5 relative">
-                    <div class="relative rounded-3xl overflow-hidden border border-zinc-800 group">
-                        <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=1000&q=80" alt="Alexandre Vane Portrait" class="w-full h-[520px] object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-60"></div>
-                        
-                        <!-- Floating Skill Badge -->
-                        <div class="absolute bottom-6 left-6 right-6 p-4 rounded-2xl glass-panel border border-zinc-700/60">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-lg font-bold">
-                                    <i class="fa-solid fa-clapperboard"></i>
-                                </div>
-                                <div>
-                                    <div class="text-white font-bold text-sm">Directeur de la Photographie</div>
-                                    <div class="text-zinc-400 text-xs">Basé à Paris • Déplacements Monde</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Text Column -->
-                <div class="lg:col-span-7 flex flex-col justify-center">
-                    <span class="text-amber-400 font-semibold text-sm tracking-widest uppercase mb-2">Mon Approche</span>
-                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mb-6 leading-tight">
-                        Sublimer l'histoire de votre marque par des visuels à fort impact.
-                    </h2>
-                    <p class="text-zinc-400 text-base sm:text-lg mb-6 leading-relaxed">
-                        Passionné par le cadrage et la lumière depuis plus de 8 ans, j'accompagne les marques, artistes et entreprises dans la création de contenus visuels uniques. Mon double profil photographe et cadreur me permet d'assurer une cohérence artistique totale sur chaque tournage.
-                    </p>
-                    <p class="text-zinc-400 text-base mb-8 leading-relaxed">
-                        De la pré-production au montage final, en passant par le calibrage couleur et les prises de vue FPV immersives, je garantis un rendu esthétique exigeant adapté aux standards du marché.
-                    </p>
-
-                    <!-- Expertise Pillars Grid -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="p-4 rounded-xl glass-card flex items-start gap-3">
-                            <i class="fa-solid fa-video text-amber-400 text-lg mt-1"></i>
-                            <div>
-                                <h4 class="text-white font-semibold text-sm">Réalisation & Clip</h4>
-                                <p class="text-zinc-400 text-xs mt-0.5">Scénarisation, tournage & direction</p>
-                            </div>
-                        </div>
-
-                        <div class="p-4 rounded-xl glass-card flex items-start gap-3">
-                            <i class="fa-solid fa-camera text-amber-400 text-lg mt-1"></i>
-                            <div>
-                                <h4 class="text-white font-semibold text-sm">Photographie Studio & Outdoor</h4>
-                                <p class="text-zinc-400 text-xs mt-0.5">Portrait, Mode, Lookbook & Pub</p>
-                            </div>
-                        </div>
-
-                        <div class="p-4 rounded-xl glass-card flex items-start gap-3">
-                            <i class="fa-solid fa-plane-up text-amber-400 text-lg mt-1"></i>
-                            <div>
-                                <h4 class="text-white font-semibold text-sm">Prise de Vue FPV & Drone</h4>
-                                <p class="text-zinc-400 text-xs mt-0.5">Plans aériens haute dynamique</p>
-                            </div>
-                        </div>
-
-                        <div class="p-4 rounded-xl glass-card flex items-start gap-3">
-                            <i class="fa-solid fa-sliders text-amber-400 text-lg mt-1"></i>
-                            <div>
-                                <h4 class="text-white font-semibold text-sm">Étalonnage & Post-prod</h4>
-                                <p class="text-zinc-400 text-xs mt-0.5">DaVinci Resolve & Premiere Pro</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+    <section id="about" class="max-w-[1800px] mx-auto grid grid-cols-1 md:grid-cols-12 grid-line-b">
+        <div class="md:col-span-4 p-8 grid-line-r flex flex-col justify-between">
+            <div>
+                <div class="font-mono text-xs text-subtle uppercase mb-4">[ 002 // BIOGRAPHY ]</div>
+                <h2 class="editorial-title font-bold uppercase mb-6 tracking-tighter">ABOUT<br>SEVEN</h2>
+            </div>
+            <div class="font-mono text-xs text-subtle uppercase">
+                LOCATED IN MARSEILLE<br>AVAILABLE WORLDWIDE
             </div>
         </div>
-    </section>
-
-    <!-- Gear Section -->
-    <section id="gear" class="py-24 bg-zinc-950">
-        <div class="max-w-7xl mx-auto px-6 md:px-12">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-amber-400 font-semibold text-sm tracking-widest uppercase mb-2 block">Équipement Professionnel</span>
-                <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">
-                    Matériel & Outils de Tournage
-                </h2>
-                <p class="text-zinc-400 text-sm sm:text-base mt-3">Un équipement de pointe sélectionné pour répondre à toutes les contraintes de terrain.</p>
+        <div class="md:col-span-8 p-8 md:p-16 flex flex-col justify-between">
+            <div class="space-y-6 text-lg md:text-2xl font-light leading-relaxed max-w-3xl">
+                <p>
+                    Photographe et vidéaste basé dans le sud de la France. Spécialisé dans la réalisation de contenus visuels percutants, le portrait éditorial et le cadrage dynamique.
+                </p>
+                <p class="text-subtle text-base md:text-xl">
+                    Mon approche combine une esthétique brute et minimaliste avec un travail précis du rythme, de la lumière naturelle et du traitement couleur.
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Box 1: Cameras & Optics -->
-                <div class="glass-card rounded-2xl p-8 border border-zinc-800">
-                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mb-6">
-                        <i class="fa-solid fa-camera-retro"></i>
-                    </div>
-                    <h3 class="font-display text-xl font-bold text-white mb-4">Boîtiers & Objectifs</h3>
-                    <ul class="space-y-3 text-sm text-zinc-400">
-                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Sony FX3 Cinema Line 4K 120fps</li>
-                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Sony A7IV (Boîtier Backup & Photo)</li>
-                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> SÉRIE Sigma Art F1.4 (24mm, 35mm, 85mm)</li>
-                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Sony FE 24-70mm F2.8 GM II</li>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 pt-12 border-t border-ink/15 mt-12 font-mono text-xs uppercase">
+                <div>
+                    <span class="text-subtle block mb-1">[ SERVICES ]</span>
+                    <ul class="space-y-1">
+                        <li>— FILM DIRECTING</li>
+                        <li>— EDITORIAL PHOTO</li>
+                        <li>— COLOR GRADING</li>
                     </ul>
                 </div>
-
-                <!-- Box 2: Drones & Lighting -->
-                <div class="glass-card rounded-2xl p-8 border border-zinc-800">
-                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mb-6">
-                        <i class="fa-solid fa-lightbulb"></i>
-                    </div>
-                    <h3 class="font-display text-xl font-bold text-white mb-4">Lumières & Drones</h3>
-                    <ul class="space-y-3 text-sm text-zinc-400">
-                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Drone FPV Custom 5" Cinewhoop 4K</li>
-                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> DJI Mavic 3 Pro (Prise Aérienne)</li>
-                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Aputure Amaran 200d + Softbox</li>
-                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Tubes LED Nanlite Pavotube RGB</li>
+                <div>
+                    <span class="text-subtle block mb-1">[ SOFTWARE ]</span>
+                    <ul class="space-y-1">
+                        <li>— DAVINCI RESOLVE</li>
+                        <li>— PIXELMATOR PRO</li>
+                        <li>— LIGHTROOM</li>
                     </ul>
                 </div>
-
-                <!-- Box 3: Audio & Software -->
-                <div class="glass-card rounded-2xl p-8 border border-zinc-800">
-                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mb-6">
-                        <i class="fa-solid fa-laptop-code"></i>
-                    </div>
-                    <h3 class="font-display text-xl font-bold text-white mb-4">Audio & Post-Production</h3>
-                    <ul class="space-y-3 text-sm text-zinc-400">
-                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Micro HF DJI Mic 2 & Rode NTG5</li>
-                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Stabilisateur DJI RS3 Pro</li>
-                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> DaVinci Resolve Studio (Étalonnage)</li>
-                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Adobe Creative Cloud (Premiere/Lightroom)</li>
+                <div>
+                    <span class="text-subtle block mb-1">[ LOCATION ]</span>
+                    <ul class="space-y-1">
+                        <li>— MARSEILLE, FR</li>
+                        <li>— PROVENCE / PACA</li>
                     </ul>
                 </div>
             </div>
@@ -538,207 +301,122 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-zinc-900/60 relative">
-        <div class="max-w-7xl mx-auto px-6 md:px-12">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                
-                <!-- Contact Info Left -->
-                <div class="lg:col-span-5 flex flex-col justify-between">
-                    <div>
-                        <span class="text-amber-400 font-semibold text-sm tracking-widest uppercase mb-2 block">Démarrer une Collaboration</span>
-                        <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mb-6">
-                            Parlons de votre projet.
-                        </h2>
-                        <p class="text-zinc-400 text-base mb-8">
-                            Une idée de vidéo, un besoin de shooting photo ou une demande de devis ? Remplissez le formulaire ou contactez-moi directement.
-                        </p>
-
-                        <!-- Contact Details Pills -->
-                        <div class="space-y-4 mb-8">
-                            <a href="mailto:contact@alexandrevane.com" class="flex items-center gap-4 p-4 rounded-xl glass-card hover:border-amber-500/40 transition-all">
-                                <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center">
-                                    <i class="fa-solid fa-envelope"></i>
-                                </div>
-                                <div>
-                                    <div class="text-xs text-zinc-400">Email Direct</div>
-                                    <div class="text-white font-medium text-sm sm:text-base">contact@alexandrevane.com</div>
-                                </div>
-                            </a>
-
-                            <div class="flex items-center gap-4 p-4 rounded-xl glass-card">
-                                <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </div>
-                                <div>
-                                    <div class="text-xs text-zinc-400">Localisation</div>
-                                    <div class="text-white font-medium text-sm sm:text-base">Paris & Mobilité Internationale</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Social Icons -->
-                    <div>
-                        <div class="text-xs text-zinc-400 uppercase tracking-widest mb-4">Réseaux Sociaux</div>
-                        <div class="flex items-center gap-3">
-                            <a href="#" class="w-11 h-11 rounded-xl glass-panel border border-zinc-800 flex items-center justify-center text-zinc-300 hover:text-amber-400 hover:border-amber-500/40 transition-all">
-                                <i class="fa-brands fa-instagram text-lg"></i>
-                            </a>
-                            <a href="#" class="w-11 h-11 rounded-xl glass-panel border border-zinc-800 flex items-center justify-center text-zinc-300 hover:text-amber-400 hover:border-amber-500/40 transition-all">
-                                <i class="fa-brands fa-vimeo-v text-lg"></i>
-                            </a>
-                            <a href="#" class="w-11 h-11 rounded-xl glass-panel border border-zinc-800 flex items-center justify-center text-zinc-300 hover:text-amber-400 hover:border-amber-500/40 transition-all">
-                                <i class="fa-brands fa-youtube text-lg"></i>
-                            </a>
-                            <a href="#" class="w-11 h-11 rounded-xl glass-panel border border-zinc-800 flex items-center justify-center text-zinc-300 hover:text-amber-400 hover:border-amber-500/40 transition-all">
-                                <i class="fa-brands fa-linkedin-in text-lg"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contact Form Right -->
-                <div class="lg:col-span-7">
-                    <form id="contact-form" class="glass-card p-8 md:p-10 rounded-3xl border border-zinc-800 space-y-6">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-xs font-semibold uppercase text-zinc-400 mb-2">Votre Nom</label>
-                                <input type="text" required placeholder="ex. Marc Dupont" class="w-full px-4 py-3.5 rounded-xl bg-zinc-900/80 border border-zinc-800 text-white placeholder-zinc-600 focus:outline-none focus:border-amber-500 transition-colors">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold uppercase text-zinc-400 mb-2">Adresse Email</label>
-                                <input type="email" required placeholder="ex. marc@entreprise.com" class="w-full px-4 py-3.5 rounded-xl bg-zinc-900/80 border border-zinc-800 text-white placeholder-zinc-600 focus:outline-none focus:border-amber-500 transition-colors">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-semibold uppercase text-zinc-400 mb-2">Type de Projet</label>
-                            <select class="w-full px-4 py-3.5 rounded-xl bg-zinc-900/80 border border-zinc-800 text-white focus:outline-none focus:border-amber-500 transition-colors">
-                                <option value="video">Vidéo Commerciale / Clip</option>
-                                <option value="photo">Shooting Photo (Portrait / Mode / Event)</option>
-                                <option value="fpv">Captation Drone FPV Aérienne</option>
-                                <option value="full">Projet Global (Photo + Vidéo)</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-semibold uppercase text-zinc-400 mb-2">Détails du Projet</label>
-                            <textarea rows="4" required placeholder="Décrivez vos besoins, la date estimée et le lieu du tournage..." class="w-full px-4 py-3.5 rounded-xl bg-zinc-900/80 border border-zinc-800 text-white placeholder-zinc-600 focus:outline-none focus:border-amber-500 transition-colors resize-none"></textarea>
-                        </div>
-
-                        <button type="submit" class="w-full py-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-base transition-all duration-300 shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2">
-                            <span>Envoyer le Message</span>
-                            <i class="fa-solid fa-paper-plane text-sm"></i>
-                        </button>
-                    </form>
-                </div>
-
+    <section id="contact" class="max-w-[1800px] mx-auto grid grid-cols-1 md:grid-cols-12 grid-line-b">
+        <div class="md:col-span-5 p-8 grid-line-r flex flex-col justify-between">
+            <div>
+                <div class="font-mono text-xs text-subtle uppercase mb-4">[ 003 // INQUIRIES ]</div>
+                <h2 class="editorial-title font-bold uppercase mb-6 tracking-tighter">START A<br>PROJECT</h2>
             </div>
+            <div class="space-y-4 font-mono text-xs uppercase">
+                <div>
+                    <span class="text-subtle block">[ DIRECT EMAIL ]</span>
+                    <a href="mailto:contact@sevengevaudan.com" class="text-base font-bold underline underline-offset-4">contact@sevengevaudan.com</a>
+                </div>
+                <div>
+                    <span class="text-subtle block">[ SOCIALS ]</span>
+                    <div class="flex gap-4 mt-1">
+                        <a href="https://instagram.com" target="_blank" class="hover:underline">INSTAGRAM ↗</a>
+                        <a href="https://tiktok.com" target="_blank" class="hover:underline">TIKTOK ↗</a>
+                        <a href="https://youtube.com" target="_blank" class="hover:underline">YOUTUBE ↗</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="md:col-span-7 p-8 md:p-16">
+            <form action="https://formspree.io/f/xknkbyyp" method="POST" class="space-y-8 font-mono text-xs uppercase">
+                <div>
+                    <label class="block text-subtle mb-2">[ YOUR NAME / COMPANY ] *</label>
+                    <input type="text" name="name" required class="w-full bg-transparent border-b border-ink py-3 focus:outline-none focus:border-subtle text-sm">
+                </div>
+                <div>
+                    <label class="block text-subtle mb-2">[ EMAIL ADDRESS ] *</label>
+                    <input type="email" name="email" required class="w-full bg-transparent border-b border-ink py-3 focus:outline-none focus:border-subtle text-sm">
+                </div>
+                <div>
+                    <label class="block text-subtle mb-2">[ PROJECT TYPE ]</label>
+                    <select name="type" class="w-full bg-transparent border-b border-ink py-3 focus:outline-none focus:border-subtle text-sm">
+                        <option value="video" class="bg-canvas">VIDEO PRODUCTION / DIRECTING</option>
+                        <option value="photo" class="bg-canvas">PHOTOGRAPHY SHOOT</option>
+                        <option value="editing" class="bg-canvas">COLOR GRADING & EDITING</option>
+                        <option value="other" class="bg-canvas">OTHER INQUIRY</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-subtle mb-2">[ PROJECT DETAILS ] *</label>
+                    <textarea name="message" rows="4" required class="w-full bg-transparent border-b border-ink py-3 focus:outline-none focus:border-subtle text-sm resize-none"></textarea>
+                </div>
+                <button type="submit" class="w-full border border-ink bg-ink text-canvas py-4 hover:bg-transparent hover:text-ink transition-colors duration-300 font-bold tracking-widest">
+                    SEND INQUIRY [ → ]
+                </button>
+            </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-8 bg-zinc-950 border-t border-zinc-900">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400">
-            <div>
-                © 2026 Alexandre Vane. Tous droits réservés.
-            </div>
-            <div class="flex items-center gap-6">
-                <a href="#" class="hover:text-amber-400 transition-colors">Mentions Légales</a>
-                <a href="#" class="hover:text-amber-400 transition-colors">Confidentialité</a>
-                <a href="#hero" class="hover:text-amber-400 transition-colors flex items-center gap-1">
-                    <span>Haut de page</span> <i class="fa-solid fa-arrow-up text-[10px]"></i>
-                </a>
-            </div>
-        </div>
+    <footer class="max-w-[1800px] mx-auto px-4 md:px-8 py-8 flex flex-col md:flex-row justify-between items-center gap-4 font-mono text-xs text-subtle uppercase">
+        <div>© 2026 SEVEN GEVAUDAN. ALL RIGHTS RESERVED.</div>
+        <div>DESIGN: SWISS EDITORIAL ARCHIVE</div>
     </footer>
 
-    <!-- Interactive Lightbox Modal (For Photos and Videos) -->
-    <div id="lightbox-modal" class="fixed inset-0 z-50 hidden bg-black/95 backdrop-blur-xl flex flex-col justify-between p-4 md:p-8">
-        <!-- Lightbox Top Controls -->
-        <div class="flex items-center justify-between w-full max-w-7xl mx-auto z-10">
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-canvas/95 backdrop-blur-lg hidden flex flex-col justify-between p-4 md:p-8">
+        <div class="flex justify-between items-center font-mono text-xs uppercase border-b border-ink/20 pb-4">
             <div>
-                <h4 id="lightbox-title" class="font-display font-bold text-lg text-white">Titre du Projet</h4>
-                <p id="lightbox-subtitle" class="text-xs text-zinc-400">Description ou catégorie</p>
+                <span id="modal-title" class="font-bold text-sm"></span>
+                <span id="modal-category" class="text-subtle ml-4"></span>
             </div>
-            <button onclick="closeLightbox()" class="w-11 h-11 rounded-full bg-zinc-900/80 border border-zinc-700 text-white hover:text-amber-400 flex items-center justify-center transition-colors">
-                <i class="fa-solid fa-xmark text-lg"></i>
+            <button onclick="closeLightbox()" class="border border-ink px-4 py-1.5 hover:bg-ink hover:text-canvas transition-colors">
+                [ CLOSE ESC ]
             </button>
         </div>
 
-        <!-- Lightbox Content Container -->
-        <div class="relative flex-1 flex items-center justify-center max-w-6xl mx-auto my-4 w-full h-full overflow-hidden">
-            <!-- Image Media -->
-            <img id="lightbox-img" class="hidden max-h-[80vh] max-w-full object-contain rounded-xl shadow-2xl" src="" alt="Zoom preview">
-            
-            <!-- Video Media -->
-            <video id="lightbox-video" class="hidden max-h-[80vh] max-w-full rounded-xl shadow-2xl" controls autoplay>
-                <source src="" type="video/mp4">
-            </video>
+        <div class="flex-1 flex items-center justify-center my-6 overflow-hidden">
+            <div id="modal-content" class="w-full max-w-5xl max-h-[75vh] flex justify-center items-center">
+                <!-- Dynamic Content injected here -->
+            </div>
         </div>
 
-        <!-- Lightbox Footer -->
-        <div class="text-center text-xs text-zinc-400">
-            Appuyez sur <kbd class="px-2 py-1 bg-zinc-800 rounded text-zinc-300">Échap</kbd> ou cliquez sur le bouton pour fermer.
+        <div class="font-mono text-xs text-subtle text-center border-t border-ink/20 pt-4 uppercase">
+            SEVEN GEVAUDAN // VISUAL ARCHIVE
         </div>
     </div>
 
-    <!-- Toast Notification Overlay -->
-    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden glass-panel border border-emerald-500/40 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3">
-        <i class="fa-solid fa-circle-check text-emerald-400 text-xl"></i>
-        <div>
-            <div class="font-bold text-sm">Message Envoyé !</div>
-            <div class="text-xs text-zinc-400">Je vous recontacterai sous 24 heures.</div>
-        </div>
-    </div>
-
-    <!-- JavaScript Interactions -->
+    <!-- Scripts -->
     <script>
-        // Gallery Category Filtering Logic
-        document.querySelectorAll('.filter-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                // Update active state on buttons
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.classList.remove('bg-amber-500', 'text-black');
-                    btn.classList.add('text-zinc-400');
-                });
-                button.classList.add('bg-amber-500', 'text-black');
-                button.classList.remove('text-zinc-400');
+        // Gallery Filter
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.filter-btn');
 
-                const filter = button.getAttribute('data-filter');
-                const items = document.querySelectorAll('.portfolio-item');
-
-                items.forEach(item => {
-                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-ink', 'text-canvas', 'active');
+                btn.classList.add('border-ink/20');
             });
-        });
 
-        // Lightbox Modal Functions
-        const modal = document.getElementById('lightbox-modal');
-        const modalImg = document.getElementById('lightbox-img');
-        const modalVideo = document.getElementById('lightbox-video');
-        const modalTitle = document.getElementById('lightbox-title');
-        const modalSubtitle = document.getElementById('lightbox-subtitle');
+            event.target.classList.add('bg-ink', 'text-canvas', 'active');
+            event.target.classList.remove('border-ink/20');
 
-        function openLightbox(type, src, title, subtitle) {
-            modalTitle.textContent = title;
-            modalSubtitle.textContent = subtitle;
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
 
-            if (type === 'image') {
-                modalVideo.pause();
-                modalVideo.classList.add('hidden');
-                modalImg.src = src;
-                modalImg.classList.remove('hidden');
-            } else if (type === 'video') {
-                modalImg.classList.add('hidden');
-                modalVideo.src = src;
-                modalVideo.classList.remove('hidden');
-                modalVideo.play().catch(e => console.log('Autoplay blocked', e));
+        // Lightbox Functions
+        function openLightbox(type, url, title, category) {
+            const modal = document.getElementById('lightbox');
+            const modalContent = document.getElementById('modal-content');
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-category').innerText = '// ' + category;
+
+            if (type === 'video') {
+                modalContent.innerHTML = `<iframe src="${url}?autoplay=1" class="w-full aspect-video max-h-[70vh] border border-ink" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+            } else {
+                modalContent.innerHTML = `<img src="${url}" class="max-h-[75vh] max-w-full object-contain border border-ink">`;
             }
 
             modal.classList.remove('hidden');
@@ -746,73 +424,20 @@
         }
 
         function closeLightbox() {
+            const modal = document.getElementById('lightbox');
+            const modalContent = document.getElementById('modal-content');
+            modalContent.innerHTML = '';
             modal.classList.add('hidden');
-            modalVideo.pause();
-            modalVideo.src = '';
-            modalImg.src = '';
             document.body.style.overflow = 'auto';
         }
 
-        function openShowreelModal() {
-            openLightbox(
-                'video', 
-                'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', 
-                'Showreel Officiel 2026', 
-                'Montage Démo Photo & Vidéo (1 min)'
-            );
-        }
-
-        // Close Lightbox on ESC key press
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeLightbox();
-        });
-
-        // Contact Form Fake Submission
-        document.getElementById('contact-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const toast = document.getElementById('toast');
-            toast.classList.remove('hidden');
-            e.target.reset();
-
-            setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 4000);
-        });
-
-        // Mobile Menu Toggle
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
-
-        mobileBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('flex');
-            if (mobileMenu.classList.contains('hidden')) {
-                menuIcon.className = 'fa-solid fa-bars text-lg';
-            } else {
-                menuIcon.className = 'fa-solid fa-xmark text-lg';
-            }
-        });
-
-        // Close mobile menu on click link
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuIcon.className = 'fa-solid fa-bars text-lg';
-            });
-        });
-
-        // Header Background Blur on Scroll
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('main-header');
-            if (window.scrollY > 50) {
-                header.classList.add('bg-zinc-950/80', 'backdrop-blur-md', 'py-3', 'border-b', 'border-zinc-800/80');
-                header.classList.remove('py-5');
-            } else {
-                header.classList.remove('bg-zinc-950/80', 'backdrop-blur-md', 'py-3', 'border-b', 'border-zinc-800/80');
-                header.classList.add('py-5');
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
             }
         });
     </script>
+
 </body>
 </html>
